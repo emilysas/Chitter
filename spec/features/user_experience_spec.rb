@@ -37,14 +37,31 @@ feature "User experience" do
     end
   end
 
-  # feature "Peeps" do
-  #   scenario "User can see peeps without being logged in" do
-        # pending
-  #   end
+feature "Peeps" do
 
-  #   scenario "user can post peep" do
-  #     pending
-  #   end 
+  before(:each) do
+    User.create(:name => 'test',
+                :username => 'username',
+                :email => "test@test.com",
+                :password => '1234',
+                :password_confirmation => '1234')
+
+    Peep.create(:author => 'author',
+                :content => 'content',
+                :timestamp => '12:00',
+                :favourites => 15,
+                :re_peeps => 10)
+  end
+  
+    scenario "User can see peeps without being logged in" do
+      visit '/'
+      expect(page).not_to have_content("Welcome, username")
+      expect(page).to have_content("I've had a great week at Makers")
+    end
+
+  # scenario "user can post peep" do
+  #   sign_in('username', '1234')
+  # end 
 
   # #   scenario "User cannot send peeps unless logged in" do
   #       pending
@@ -57,7 +74,7 @@ feature "User experience" do
   # scenario "user can reply to a peep from another user" do
   #   pending
   # end
-  # end
+  end
 
 
 end
