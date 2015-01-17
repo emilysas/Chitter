@@ -31,6 +31,11 @@ feature "sign up"  do
     expect(page).to have_content("Sorry, there were the following problems with the form")
   end
 
+  scenario "passwords are secured with bcrypt" do
+    sign_up('test', 'username', 'test@test.com', '1234', '1234')
+    expect(User.first.password_digest).not_to eq('1234')
+  end
+
 
   def sign_up(name, username, email, password, password_confirmation)
     visit '/'
