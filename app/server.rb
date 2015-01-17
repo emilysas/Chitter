@@ -4,6 +4,7 @@ require 'rack-flash'
 
 require_relative 'data_mapper_setup'
 require './models/user'
+require './models/peep'
 
 class Chitter < Sinatra::Base
 
@@ -12,6 +13,7 @@ class Chitter < Sinatra::Base
   use Rack::Flash
 
   get '/' do
+    @peeps = Peep.all
     erb :index
   end
 
@@ -52,7 +54,7 @@ class Chitter < Sinatra::Base
   end
 
   def current_user
-    @current_user ||=User.get(session[:user_id]) if session[:user_id]
+    @current_user ||= User.get(session[:user_id]) if session[:user_id]
   end
 
 end

@@ -5,10 +5,12 @@ class User
   include DataMapper::Resource
 
   property :id,              Serial
-  property :name,            String
-  property :username,        String, :unique => true, :message => "This username is already taken"
-  property :email,           String, :unique => true, :message => "This email is already taken"
+  property :name,            String, :required => true
+  property :username,        String, :required => true, :unique => true, :message => "This username is already taken"
+  property :email,           String, :required => true, :unique => true, :message => "This email is already taken"
   property :password_digest, Text
+
+  has n, :peeps, :through => Resource
 
   validates_uniqueness_of :username
   validates_uniqueness_of :email

@@ -40,14 +40,14 @@ feature "User experience" do
 feature "Peeps" do
 
   before(:each) do
-    User.create(:name => 'test',
-                :username => 'username',
-                :email => "test@test.com",
+    User.create(:name => 'bob',
+                :username => 'spongebob',
+                :email => "bob@test.com",
                 :password => '1234',
                 :password_confirmation => '1234')
 
-    Peep.create(:author => 'author',
-                :content => 'content',
+    Peep.create(:posted_by => 'bob',
+                :content => "I've had a great week at Makers",
                 :timestamp => '12:00',
                 :favourites => 15,
                 :re_peeps => 10)
@@ -55,7 +55,8 @@ feature "Peeps" do
   
     scenario "User can see peeps without being logged in" do
       visit '/'
-      expect(page).not_to have_content("Welcome, username")
+      save_and_open_page
+      expect(page).not_to have_content("Welcome, spongebob")
       expect(page).to have_content("I've had a great week at Makers")
     end
 
