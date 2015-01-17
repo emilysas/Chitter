@@ -4,6 +4,7 @@ require './app/server.rb' #needs to be after the env so that the server knows
 # which environment it's running in
 require 'database_cleaner'
 require 'capybara/rspec'
+require "rack/flash/test"
 
 Capybara.app = Chitter
 
