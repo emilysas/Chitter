@@ -19,11 +19,18 @@ feature "sign up"  do
     expect(page).to have_content("This username is already taken")
   end
 
-  scenario "with an email that is already registered" do
+  scenario "user cannot sign up with an email that is already registered" do
     expect{ sign_up('test', 'username', 'test@test.com', '1234', '1234') }.to change(User, :count).by(1)
     expect{ sign_up('another_test', 'another_username', 'test@test.com', '4321', '4321') }.to change(User, :count).by(0)
     expect(page).to have_content("This email is already taken")
   end
+
+  scenario "user cannot sign up unless password and password confirmation match" do
+    expect { sign_up('test', 'username', 'test@test.com', '1234', '123') }.to change(User, :count).by(0)
+    expect(current_path).to eq('/users/new')
+    expect(page).to have_content("Sorry, there were the following problems with the form")
+  end
+
 
   def sign_up(name, username, email, password, password_confirmation)
     visit '/'
