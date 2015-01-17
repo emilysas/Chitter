@@ -36,7 +36,6 @@ feature "sign up"  do
     expect(User.first.password_digest).not_to eq('1234')
   end
 
-
   def sign_up(name, username, email, password, password_confirmation)
     visit '/'
     click_on 'Sign Up'
