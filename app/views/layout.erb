@@ -8,6 +8,8 @@
 			<form method='get' action='/users/new'>
 				<input type="submit" value="Sign Up">
 			</form>
+			
+		</header>
 		<% if flash[:errors] && !flash[:errors].empty? %>
 			Sorry, there were the following problems with the form.
 			<ul id="errors">
@@ -16,10 +18,11 @@
 				<% end %>
 			</ul>
 		<% end %>
-
-
-		</header>
-
+<!-- 		<% if flash[:notice] %>
+			<section id="notice">
+				<%= flash[:notice] %>
+			</section>
+		<% end %> -->
 	<%= yield %>
 	</body>
 </html>

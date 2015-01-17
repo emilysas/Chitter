@@ -16,10 +16,11 @@ class Chitter < Sinatra::Base
   end
 
   get '/users/new' do
+    @user = User.new
     erb :sign_up
   end
 
-  post '/user/sign_up' do
+  post '/users/registered' do
     @user = User.create(:name => params[:name],
                 :username => params[:username],
                 :email => params[:email],
