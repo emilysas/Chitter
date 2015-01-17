@@ -11,8 +11,8 @@ feature "User experience" do
       User.create(:name => 'test',
                   :username => 'username',
                   :email => "test@test.com",
-                  :password => 'test',
-                  :password_confirmation => 'test')
+                  :password => '1234',
+                  :password_confirmation => '1234')
     end
 
     scenario "with the correct credentials" do
@@ -33,7 +33,7 @@ feature "User experience" do
       visit '/sessions/new'
       fill_in 'username', :with => username
       fill_in 'password', :with => password
-      click_button 'Sign in'
+      click_button 'Login'
     end
   end
 
