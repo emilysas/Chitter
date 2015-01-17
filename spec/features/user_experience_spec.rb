@@ -22,12 +22,12 @@ feature "User experience" do
       expect(page).to have_content("Welcome, username")
     end
 
-    # scenario "with incorrect credentails" do
-    #   visit '/'
-    #   expect(page).not_to have_content("Welcome, test@test.com")
-    #   sign_in('test@test.com', 'wrong')
-    #   expect(page).not_to have_content("Welcome, test@test.com")
-    # end
+    scenario "with incorrect credentails" do
+      visit '/'
+      expect(page).not_to have_content("Welcome, username")
+      sign_in('username', 'wrong')
+      expect(page).not_to have_content("Welcome, test@test.com")
+    end
 
     def sign_in(username, password)
       visit '/sessions/new'
