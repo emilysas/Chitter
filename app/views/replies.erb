@@ -1,15 +1,15 @@
 <% @peep = Peep.first(:id => params[:peep_id]) %>
-<li id="<%= @peep.id %>">
-	<%= @peep.posted_by %>
-	<%= @peep.content %>
-	<%= @peep.when(@peep.created_at) %>
+<li id="<%= "peep#{@peep.id}" %>">
+	<p><%= @peep.posted_by %></p>
+	<p><%= @peep.content %></p>
+	<p><%= @peep.when(@peep.created_at) %></p>
 	<ul>
 		<% replies = Reply.all(order: [:id.desc]) %>
 		<% replies.each do |reply| %>
 			<li id="<%= "reply#{reply.id}" %>">
-				<%= reply.posted_by %>
-				<%= reply.content %>
-				<%= reply.when(reply.created_at) %>
+				<p><%= reply.posted_by %><p>
+				<p><%= reply.content %><p>
+				<p><%= reply.when(reply.created_at) %><p>
 			</li>
 		<% end %>
 	</ul>

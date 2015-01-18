@@ -29,11 +29,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/users/registered' do
-    @user = User.create(:name => params[:name],
-                :username => params[:username],
-                :email => params[:email],
-                :password => params[:password],
-                :password_confirmation => params[:password_confirmation])
+    @user = user_create
     if @user.save
       session[:user_id] = @user.id
       redirect to('/')
@@ -66,10 +62,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/sessions/posted' do
-    @peep = Peep.create(:user_id => params[:user_id],
-                :posted_by => params[:posted_by],
-                :content => params[:content],
-                :created_at => Time.now)
+    @peep = peep_create
     if @peep.save
       redirect to('/')
     else
@@ -83,11 +76,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/sessions/replied/:peep_id' do
-    @reply = Reply.create(:user_id => session[:user_id],
-                :peep_id => params[:peep_id],
-                :posted_by => session[:user_username],
-                :content => params[:content],
-                :created_at => Time.now)
+    @reply = reply_create
     if @reply.save
       redirect to('/')
     else

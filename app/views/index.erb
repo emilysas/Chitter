@@ -5,9 +5,9 @@ Welcome to Chitter!
 	<% peeps = Peep.all(order: [:id.desc]) %>
 	<% peeps.each do |peep| %>
 	<li id="<%= peep.id %>">
-		<%= peep.posted_by %>
-		<%= peep.content %>
-		<%= peep.when(peep.created_at) %>
+		<p><%= peep.posted_by %></p>
+		<p><%= peep.content %></p>
+		<p><%= peep.when(peep.created_at) %></p>
 		<form method='get' action="/sessions/reply/<%= "#{peep.id}" %>">
 			<input type="submit" value="Reply">
 		</form>
