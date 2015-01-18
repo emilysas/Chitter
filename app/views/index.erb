@@ -1,3 +1,5 @@
 Welcome to Chitter!
 
-<%= Peep.first.content if Peep.first %>
+<% Peep.all.each do |peep| %>
+<%= peep.content %>
+<% end %>
