@@ -55,10 +55,7 @@ feature "Peeps" do
 
     scenario "user can post peep" do
       sign_in('spongebob', '1234')
-      Peep.create(:user_id => User.first(:username => 'spongebob').id,
-                  :posted_by => 'bob',
-                  :content => "Chitter is even better than Twitter",
-                  :created_at => Time.now)
+      peep("Chitter is even better than Twitter")
       expect(page).to have_content("Chitter is even better than Twitter")
     end 
 

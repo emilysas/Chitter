@@ -18,7 +18,10 @@
 			</form>
 
 			<% if current_user %>
-			Welcome, <%= current_user.username %>
+				Welcome, <%= current_user.username %>
+				<form method='get' action='/sessions/peep'>
+					<input type="submit" value="Peep">
+				</form>
 			<% end %>
 
 		</header>

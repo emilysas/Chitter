@@ -1,5 +1,5 @@
 module UserExperienceMethods
-  
+
   def sign_up(name, username, email, password, password_confirmation)
     visit '/'
     click_on 'Sign Up'
@@ -18,4 +18,9 @@ module UserExperienceMethods
     click_button 'Login'
   end
 
+  def peep(content)
+    click_button 'Peep'
+    fill_in :content => content
+    click_on 'Send Peep'
+  end
 end
