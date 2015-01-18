@@ -81,6 +81,7 @@ class Chitter < Sinatra::Base
 
   post '/sessions/replied/:peep_id' do
     @reply = Reply.create(:user_id => session[:user_id],
+                :peep_id => params[:peep_id],
                 :posted_by => session[:user_username],
                 :content => params[:content],
                 :created_at => Time.now)

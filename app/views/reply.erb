@@ -1,4 +1,4 @@
-<form method="post" action='/sessions/replied'>
+<form method="post" action='/sessions/replied/<%= "#{params[:peep_id]}" %>'>
 	<% @peep = Peep.first(:id => params[:peep_id]) %>
 	<%= @peep.posted_by %>
 	<%= @peep.content %>
