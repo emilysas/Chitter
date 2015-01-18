@@ -1,7 +1,5 @@
 feature "User signs in" do
-  # In order to let poeple know what I am doing
-  # As a maker
-  # I want to post a peep to chitter
+
   include UserExperienceMethods
 
   before(:each) do
