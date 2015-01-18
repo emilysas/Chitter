@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
 require 'rack-flash'
-require 'dm-pagination'
 
 require_relative 'data_mapper_setup'
 require './models/user'

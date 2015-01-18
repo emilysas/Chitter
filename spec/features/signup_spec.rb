@@ -8,6 +8,7 @@ feature "sign up"  do
     # people can sign up with their: email, password, name, and user name
     # the username and email must be unique
     # passwords are secured with bcrypt
+  include UserExperienceMethods  
 
   scenario "a user can sign up" do
     expect{ sign_up('test', 'username', 'test@test.com', '1234', '1234') }.to change(User, :count).by(1)
@@ -34,17 +35,6 @@ feature "sign up"  do
   scenario "passwords are secured with bcrypt" do
     sign_up('test', 'username', 'test@test.com', '1234', '1234')
     expect(User.first.password_digest).not_to eq('1234')
-  end
-
-  def sign_up(name, username, email, password, password_confirmation)
-    visit '/'
-    click_on 'Sign Up'
-    fill_in :name, :with => name
-    fill_in :username, :with => username
-    fill_in :email, :with => email
-    fill_in :password, :with => password
-    fill_in :password_confirmation, :with => password_confirmation
-    click_on 'Submit'
   end
 
 

@@ -2,8 +2,7 @@ feature "User experience" do
   # In order to let poeple know what I am doing
   # As a maker
   # I want to post a peep to chitter
-
-
+  include UserExperienceMethods
 
   feature "User signs in" do
 
@@ -29,12 +28,6 @@ feature "User experience" do
       expect(page).not_to have_content("Welcome, test@test.com")
     end
 
-    def sign_in(username, password)
-      visit '/sessions/new'
-      fill_in 'username', :with => username
-      fill_in 'password', :with => password
-      click_button 'Login'
-    end
   end
 
 feature "Peeps" do
@@ -60,9 +53,14 @@ feature "Peeps" do
       expect(page).to have_content("I've had a great week at Makers")
     end
 
-  # scenario "user can post peep" do
-  #   sign_in('username', '1234')
-  # end 
+    scenario "user can post peep" do
+      sign_in('spongebob', '1234')
+      Peep.create(:user_id => User.first(:username => 'spongebob').id,
+                  :posted_by => 'bob',
+                  :content => "Chitter is even better than Twitter",
+                  :created_at => Time.now)
+      expect(page).to have_content("Chitter is even better than Twitter")
+    end 
 
   # #   scenario "User cannot send peeps unless logged in" do
   #       pending

@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test' # tells us which database to work with
 
 require './app/server.rb' #needs to be after the env so that the server knows 
 # which environment it's running in
+require './spec/helpers/user_experience_methods'
 require 'database_cleaner'
 require 'capybara/rspec'
 require "rack/flash/test"
