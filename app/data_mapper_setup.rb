@@ -1,5 +1,6 @@
 require './models/user'
 require './models/peep'
+require './models/authorship'
 
 env = ENV['RACK_ENV'] || 'development'
 

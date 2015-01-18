@@ -46,16 +46,16 @@ feature "Peeps" do
                 :password => '1234',
                 :password_confirmation => '1234')
 
-    Peep.create(:posted_by => 'bob',
+    Peep.create(:user_id => User.first.id,
+                :posted_by => 'bob',
                 :content => "I've had a great week at Makers",
-                :timestamp => '12:00',
+                :created_at => '12:00',
                 :favourites => 15,
                 :re_peeps => 10)
   end
   
     scenario "User can see peeps without being logged in" do
       visit '/'
-      save_and_open_page
       expect(page).not_to have_content("Welcome, spongebob")
       expect(page).to have_content("I've had a great week at Makers")
     end
