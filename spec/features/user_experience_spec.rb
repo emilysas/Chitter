@@ -67,15 +67,17 @@ feature "User experience" do
         expect(page).not_to have_button("Peep")
       end
 
-      # scenario "user can see others' peeps in chronological order" do
-      #   sign_in('spongebob', '1234')
-      #   peep("Chitter is even better than Twitter")
-      #   sign_in('eatmyshorts', 'simpson')
-      #   peep("Chitter is awesome dude!")
-      #   sign_in('spongebob', '1234')
-      #   peep("It needs some CSS though")
-      #   expect(page).to have_content ?????
-      # end
+      scenario "user can see others' peeps in chronological order" do
+        sign_in('spongebob', '1234')
+        create_peep("Chitter is even better than Twitter")
+        sign_in('eatmyshorts', 'simpson')
+        create_peep("Chitter is awesome dude!")
+        sign_in('spongebob', '1234')
+        create_peep("It needs some CSS though")
+        expect(page.all('li')[0]).to have_content("It needs some CSS though")
+        expect(page.all('li')[1]).to have_content("Chitter is awesome dude!")
+        expect(page.all('li')[2]).to have_content("Chitter is even better than Twitter")
+      end
 
       scenario "user can reply to a peep from another user" do
         sign_in('spongebob', '1234')
