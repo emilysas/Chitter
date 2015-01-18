@@ -7,6 +7,7 @@ require 'rack-flash'
 require_relative 'data_mapper_setup'
 require './models/user'
 require './models/peep'
+require './models/reply'
 
 class Chitter < Sinatra::Base
 
@@ -71,6 +72,23 @@ class Chitter < Sinatra::Base
     else
       flash.now[:errors] = @peep.errors.full_messages
       erb :peep
+    end
+  end
+
+  get '/sessions/reply/:peep_id' do
+    erb :reply
+  end
+
+  post '/sessions/replied/:peep_id' do
+    @reply = Reply.create(:user_id => session[:user_id],
+                :posted_by => session[:user_username],
+                :content => params[:content],
+                :created_at => Time.now)
+    if @reply.save
+      redirect to('/')
+    else
+      flash.now[:errors] = @reply.errors.full_messages
+      erb :reply
     end
   end
 

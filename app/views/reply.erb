@@ -1,0 +1,8 @@
+<form method="post" action='/sessions/replied'>
+	<% @peep = Peep.first(:id => params[:peep_id]) %>
+	<%= @peep.posted_by %>
+	<%= @peep.content %>
+	<%= @peep.when(@peep.created_at) %>
+	Write Reply: <input type="text" name="content">
+	<input type="submit" value="Reply to Peep">
+</form>

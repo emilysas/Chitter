@@ -1,4 +1,4 @@
-class Peep
+class Reply
 
   include DataMapper::Resource
 
@@ -10,9 +10,9 @@ class Peep
   property :re_peeps,        Integer
 
   belongs_to :user
-  has n, :replies, :through => Resource
+  belongs_to :peep
 
-  def when(time) 
+  def when(time)
     diff = Time.now - time
     diff_in_mins = (diff/60).to_i
     timeframe(diff_in_mins)
@@ -31,8 +31,3 @@ class Peep
   end
 
 end
-
-
-
-
-

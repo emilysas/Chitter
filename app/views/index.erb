@@ -1,12 +1,17 @@
 Welcome to Chitter!
 
 <% if Peep.first %>
+<ul>
 	<% peeps = Peep.all(order: [:id.desc]) %>
 	<% peeps.each do |peep| %>
 	<li id="<%= peep.id %>">
 		<%= peep.posted_by %>
 		<%= peep.content %>
 		<%= peep.when(peep.created_at) %>
+		<form method='get' action="/sessions/reply/<%= "#{peep.id}" %>">
+			<input type="submit" value="Reply">
+		</form>
 	</li>
 	<% end %>
+</ul>
 <% end %>

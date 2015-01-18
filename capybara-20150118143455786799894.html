@@ -1,0 +1,46 @@
+<DOCTYPE! html>
+<html>
+
+	<head>
+		<title>Chitter</title>
+	</head>
+
+	<body>
+
+		<header>
+
+			<form method='get' action='/users/new'>
+				<input type="submit" value="Sign Up">
+			</form>
+
+			<form method='get' action='/sessions/new'>
+				<input type="submit" value="Sign In">
+			</form>
+
+			
+				Welcome, eatmyshorts
+				<form method='get' action='/sessions/peep'>
+					<input type="submit" value="Peep">
+				</form>
+			
+
+		</header>
+
+		
+
+<!-- 		 -->
+
+	<form method="post" action='/sessions/replied'>
+	
+	spongebob
+	Chitter is even better than Twitter
+	Under a minute ago
+	Write Reply: <input type="text" name="content">
+<!-- 	<input type="hidden" name="user_id" value="14">
+	<input type="hidden" name="peep_id" value="">
+	<input type="hidden" name="posted_by" value="eatmyshorts"> -->
+	<input type="submit" value="Reply to Peep">
+</form>
+	  
+	</body>
+</html>

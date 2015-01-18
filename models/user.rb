@@ -22,9 +22,8 @@ class User
   
   property :password_digest, Text
 
-  # has n,   :authorships
-  # has n,   :peeps, :through => :authorships
   has n, :peeps, :through => Resource
+  has n, :replies, :through => Resource
 
   validates_uniqueness_of   :username
   validates_uniqueness_of   :email

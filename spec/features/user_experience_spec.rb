@@ -81,8 +81,9 @@ feature "Peeps" do
       sign_in('spongebob', '1234')
       peep("Chitter is even better than Twitter")
       sign_in('eatmyshorts', 'simpson')
+      first('li').click_button("Reply")
       # within("//li[@id='2']") do
-        click_button("Reply")
+        # click_button("Reply")
       # end
       fill_in 'content', :with => "Maybe once you've sorted the CSS out"
       click_button("Reply to Peep")
