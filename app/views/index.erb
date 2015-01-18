@@ -11,6 +11,9 @@ Welcome to Chitter!
 		<form method='get' action="/sessions/reply/<%= "#{peep.id}" %>">
 			<input type="submit" value="Reply">
 		</form>
+		<form method='get' action="/sessions/show_reply/<%= "#{peep.id}" %>">
+			<input type="submit" value="<%= "Replies: #{Reply.all(:peep_id => peep.id).size}" %>">
+		</form>
 	</li>
 	<% end %>
 </ul>

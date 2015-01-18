@@ -1,0 +1,19 @@
+<% @peep = Peep.first(:id => params[:peep_id]) %>
+<li id="<%= @peep.id %>">
+	<%= @peep.posted_by %>
+	<%= @peep.content %>
+	<%= @peep.when(@peep.created_at) %>
+	<ul>
+		<% replies = Reply.all(order: [:id.desc]) %>
+		<% replies.each do |reply| %>
+			<li id="<%= "reply#{reply.id}" %>">
+				<%= reply.posted_by %>
+				<%= reply.content %>
+				<%= reply.when(reply.created_at) %>
+			</li>
+		<% end %>
+	</ul>
+	<form method='get' action="/sessions/reply/<%= "#{@peep.id}" %>">
+		<input type="submit" value="Reply">
+	</form>
+</li>
