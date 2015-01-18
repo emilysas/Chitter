@@ -1,0 +1,128 @@
+body { background-color: #dcdcdc;
+			font-family: 'Poiret One';
+
+}
+
+header { 
+			margin-top: 1%;
+			background-color: #5f9ea0;
+			margin-top: 0%;
+			padding-top: 1%;
+
+}
+
+.topright { display: inline;
+}
+
+h1 {	display: inline;
+			font-size: 8em;
+			color: white;
+			text-align: center;
+			margin-left: 23%;
+			width: 33%;
+
+}
+
+
+nav { display: inline;
+			width: 12%;
+			margin-left: 82.5%;
+			padding: 2.5%;
+}
+
+nav form{ display: inline;
+					margin-top: 5%;
+					
+}
+
+nav form input {
+					width:5%;
+}
+
+.aside {display: inline;
+				width: 20%;
+
+}
+
+.aside form input{
+				width: 5%;
+				margin-left: 6.25%;
+				margin-bottom: 1%;
+
+}
+
+.username { 
+				width: 30%;
+				margin-left: 5%;
+				margin-bottom: 1%;
+				font-size: 2em;
+
+}
+
+
+
+img { display: inline;
+			height: 20%;
+			margin-left: 5%;
+
+}
+
+.all_peeps, .peep { 	
+					margin-top: 1%;
+					margin-left: 28.5%;
+					width: 40%;
+					background-color: white;
+					border: double;
+					border-color: #5f9ea0;
+					border-radius: 7%;
+					padding: 1%;
+					
+
+}
+
+.all_peeps .buttons, .peep .buttons {
+					margin-left: 75%;
+
+}
+
+.all_peeps form, .peep form {
+					display: inline;
+
+}
+
+.peep li { text-decoration: none;
+
+}
+
+.all_peeps p, .peep p { padding-left: 5%;
+
+}
+
+
+
+.content {
+					text-align: center;
+}
+
+.time {		display: inline;
+					font-size: 1em;
+
+}
+
+p { font-size: 1.5em;
+
+}
+
+.signin, .signup, .reply {
+	margin-top: 5%;
+	margin-left: 10%;
+}
+
+.reply {
+	width: 30%;
+}
+
+.reply .peep {
+	width: 100%;
+	margin-left: 0;
+}

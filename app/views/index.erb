@@ -1,20 +1,20 @@
-Welcome to Chitter!
-
-<% if Peep.first %>
-<ul>
-	<% peeps = Peep.all(order: [:id.desc]) %>
-	<% peeps.each do |peep| %>
-	<li id="<%= peep.id %>">
-		<p><%= peep.posted_by %></p>
-		<p><%= peep.content %></p>
-		<p><%= peep.when(peep.created_at) %></p>
-		<form method='get' action="/sessions/reply/<%= "#{peep.id}" %>">
-			<input type="submit" value="Reply">
-		</form>
-		<form method='get' action="/sessions/show_reply/<%= "#{peep.id}" %>">
-			<input type="submit" value="<%= "Replies: #{Reply.all(:peep_id => peep.id).size}" %>">
-		</form>
-	</li>
+<section class="all_peeps"
+	<% if Peep.first %>
+		<% peeps = Peep.all(order: [:id.desc]) %>
+		<% peeps.each do |peep| %>
+		<section class="peep" id="<%= peep.id %>">
+			<p><%= peep.posted_by %></p>
+			<p class="content"><%= peep.content %></p>
+			<p class="time"><%= peep.when(peep.created_at) %></p>
+			<section class="buttons">
+				<form method='get' action="/sessions/reply/<%= "#{peep.id}" %>">
+					<input type="submit" value="Reply">
+				</form>
+				<form method='get' action="/sessions/show_reply/<%= "#{peep.id}" %>">
+					<input type="submit" value="<%= "Replies: #{Reply.all(:peep_id => peep.id).size}" %>">
+				</form>
+			</section>
+		</section>
+		<% end %>
 	<% end %>
-</ul>
-<% end %>
+</section>

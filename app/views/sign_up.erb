@@ -1,9 +1,11 @@
-Please enter your details:
+<section class="signup">
+<p>Please enter your details: </p>
 <form method="post" action='/users/registered'>
-	Name: 		<input type="text" name="name" value="<%= @user.name %>">
-	Username: <input type="text" name="username" value="<%= @user.username %>">
-	Email: 		<input type="text" name="email" value="<%= @user.email %>">
-	Password:	<input type="password" name="password">
-	Password Confirmation: <input type="password" name="password_confirmation">
+	<p>Name: </p><input type="text" name="name" value="<%= @user.name %>">
+	<p>Username: </p><input type="text" name="username" value="<%= @user.username %>">
+	<p>Email: </p><input type="text" name="email" value="<%= @user.email %>">
+	<p>Password: </p><input type="password" name="password">
+	<p>Password Confirmation: </p><input type="password" name="password_confirmation">
 	<input type="submit" value="Submit">
 </form>
+</section>

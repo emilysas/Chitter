@@ -1,8 +1,12 @@
-<form method="post" action='/sessions/replied/<%= "#{params[:peep_id]}" %>'>
-	<% @peep = Peep.first(:id => params[:peep_id]) %>
-	<p><%= @peep.posted_by %></p>
-	<p><%= @peep.content %></p>
-	<p><%= @peep.when(@peep.created_at) %></p>
-	Write Reply: <input type="text" name="content">
-	<input type="submit" value="Reply to Peep">
-</form>
+<section class="reply">
+	<section class="peep">
+	<form method="post" action='/sessions/replied/<%= "#{params[:peep_id]}" %>'>
+		<% @peep = Peep.first(:id => params[:peep_id]) %>
+		<p><%= @peep.posted_by %></p>
+		<p class="content"><%= @peep.content %></p>
+		<p class="time"><%= @peep.when(@peep.created_at) %></p>
+		</section>
+		<p>Write Reply: </p><input type="text" name="content">
+		<input type="submit" value="Reply to Peep">
+	</form>
+</section>
