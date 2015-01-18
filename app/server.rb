@@ -39,15 +39,6 @@ class Chitter < Sinatra::Base
     end
   end
 
-  get '/sessions/new' do
-    session.clear
-    erb :sign_in
-  end
-
-  get '/sessions/peep' do
-    erb :peep
-  end
-
   post '/sessions' do
     username, password = params[:username], params[:password]
     user = User.authenticate(username, password)
@@ -59,6 +50,15 @@ class Chitter < Sinatra::Base
       flash[:errors] = ["the username or password is incorrect"]
       erb :sign_in
     end
+  end
+
+  get '/sessions/new' do
+    session.clear
+    erb :sign_in
+  end
+
+  get '/sessions/peep' do
+    erb :peep
   end
 
   post '/sessions/posted' do
@@ -87,6 +87,11 @@ class Chitter < Sinatra::Base
 
   get '/sessions/show_reply/:peep_id' do
     erb :replies
+  end
+
+  get '/sessions/end' do
+    session.clear
+    redirect '/'
   end
 
   def current_user
