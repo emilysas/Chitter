@@ -77,9 +77,16 @@ feature "Peeps" do
     #   expect(page).to have_content ?????
     # end
 
-  # scenario "user can reply to a peep from another user" do
-  #   pending
-  # end
+    scenario "user can reply to a peep from another user" do
+      sign_in('spongebob', '1234')
+      peep("Chitter is even better than Twitter")
+      sign_in('eatmyshorts', 'simpson')
+      # within("//li[@id='2']") do
+        click_button("Reply")
+      # end
+      fill_in 'content', :with => "Maybe once you've sorted the CSS out"
+      click_button("Reply to Peep")
+    end
   end
 
 
