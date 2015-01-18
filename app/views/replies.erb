@@ -1,19 +1,19 @@
+<section class="replies">
 <% @peep = Peep.first(:id => params[:peep_id]) %>
-<li id="<%= "peep#{@peep.id}" %>">
+<section class="peep" id="<%= "peep#{@peep.id}" %>">
 	<p><%= @peep.posted_by %></p>
 	<p class="content"><%= @peep.content %></p>
 	<p class="time"><%= @peep.when(@peep.created_at) %></p>
-	<ul>
+	</section>
 		<% replies = Reply.all(order: [:id.desc]) %>
 		<% replies.each do |reply| %>
-			<li id="<%= "reply#{reply.id}" %>">
+			<section class="peep" id="<%= "reply#{reply.id}" %>">
 				<p><%= reply.posted_by %><p>
 				<p class="content"><%= reply.content %><p>
 				<p class="time"><%= reply.when(reply.created_at) %><p>
-			</li>
+			</section>
 		<% end %>
-	</ul>
 	<form method='get' action="/sessions/reply/<%= "#{@peep.id}" %>">
 		<input type="submit" value="Reply">
 	</form>
-</li>
+</section>

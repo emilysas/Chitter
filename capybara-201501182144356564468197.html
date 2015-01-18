@@ -1,0 +1,78 @@
+<DOCTYPE! html>
+<html>
+
+	<head>
+		<title>Chitter</title>
+		<link rel="stylesheet" type="text/css" href="/normalize.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheet.css">
+		<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+
+		<header>
+				<nav>
+					<form method='get' action='/sessions/new'>
+						<input type="submit" value="Sign In">
+					</form>
+
+					<form method='get' action='/users/new'>
+						<input type="submit" value="Sign Up">
+					</form>
+				</nav>
+
+			<img src="/vintage-blue-jay-bird.png" alt="vintage blue jay bird">
+
+			<h1><a href="/">Chitter</a></h1>
+				
+			<section class="aside">
+				
+					<p class="username">eatmyshorts</p>
+					<form method='get' action='/sessions/peep'>
+						<input type="submit" value="Peep">
+					</form>
+				
+			</section>
+
+		</header>
+
+		
+
+	<section class="all_peeps"
+	
+		
+		
+		<section class="peep" id="12">
+			<p>spongebob</p>
+			<p class="content">Chitter is even better than Twitter</p>
+			<p class="time">Under a minute ago</p>
+			<section class="buttons">
+				<form method='get' action="/sessions/reply/12">
+					<input type="submit" value="Reply">
+				</form>
+				<form method='get' action="/sessions/show_reply/12">
+					<input type="submit" value="Replies: 0">
+				</form>
+			</section>
+		</section>
+		
+		<section class="peep" id="11">
+			<p>bob</p>
+			<p class="content">I've had a great week at Makers</p>
+			<p class="time">9 hour ago</p>
+			<section class="buttons">
+				<form method='get' action="/sessions/reply/11">
+					<input type="submit" value="Reply">
+				</form>
+				<form method='get' action="/sessions/show_reply/11">
+					<input type="submit" value="Replies: 0">
+				</form>
+			</section>
+		</section>
+		
+	
+</section>
+
+	  
+	</body>
+</html>

@@ -26,7 +26,7 @@ feature "Peeps" do
   
     scenario "User can see peeps without being logged in" do
       visit '/'
-      expect(page).not_to have_content("Welcome, spongebob")
+      expect(page).not_to have_content("spongebob")
       expect(page).to have_content("I've had a great week at Makers")
     end
 
@@ -47,9 +47,9 @@ feature "Peeps" do
       create_peep("Chitter is awesome dude!")
       sign_in('spongebob', '1234')
       create_peep("It needs some CSS though")
-      expect(page.all('li')[0]).to have_content("It needs some CSS though")
-      expect(page.all('li')[1]).to have_content("Chitter is awesome dude!")
-      expect(page.all('li')[2]).to have_content("Chitter is even better than Twitter")
+      expect(page.all('.all_peeps')[0]).to have_content("It needs some CSS though")
+      expect(page.all('.peep')[0]).to have_content("Chitter is awesome dude!")
+      expect(page.all('.peep')[1]).to have_content("Chitter is even better than Twitter")
     end
 
     scenario "user can reply to a peep from another user" do
@@ -59,12 +59,13 @@ feature "Peeps" do
       reply_peep("Me too!")
     end
 
-    scenario "user can see other users' replies to a peep" do  
+    scenario "user can see other users' replies to a peep" do 
+      sign_in('spongebob', '1234')
+      create_peep("Chitter is even better than Twitter") 
       sign_in('eatmyshorts', 'simpson')
-      reply_peep("Me too!")
-      visit '/'
-      first('li').click_button("Replies: #{Reply.all.size}")
-      expect(page).to have_content("Me too!")
+      reply_peep("Yes!")
+      page.all('.peep')[0].click_button("Replies: #{Reply.all.size}")
+      expect(page).to have_content("Yes!")
     end
 
 end

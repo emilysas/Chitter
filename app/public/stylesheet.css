@@ -14,13 +14,18 @@ header {
 .topright { display: inline;
 }
 
-h1 {	display: inline;
+li {
+			text-decoration: none;
+}
+h1 {	width: 33%;
+			display: inline;
 			font-size: 8em;
+			text-align: center;}
+h1 a{	display: inline;
 			color: white;
-			text-align: center;
 			margin-left: 23%;
 			width: 33%;
-
+			text-decoration: none;
 }
 
 
@@ -75,7 +80,7 @@ img { display: inline;
 					border: double;
 					border-color: #5f9ea0;
 					border-radius: 7%;
-					padding: 1%;
+					padding: .75%;
 					
 
 }
@@ -126,3 +131,10 @@ p { font-size: 1.5em;
 	width: 100%;
 	margin-left: 0;
 }
+
+.replies input {
+	margin-top: 1%;
+	margin-left: 47.5%;
+	width: 7.5%;
+}
+

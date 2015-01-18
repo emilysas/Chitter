@@ -26,26 +26,30 @@
 			<h1><a href="/">Chitter</a></h1>
 				
 			<section class="aside">
-				<% if current_user %>
-					<p class="username"><%= current_user.username %></p>
+				
+					<p class="username">eatmyshorts</p>
 					<form method='get' action='/sessions/peep'>
 						<input type="submit" value="Peep">
 					</form>
-				<% end %>
+				
 			</section>
 
 		</header>
 
-		<% if flash[:errors] && !flash[:errors].empty? %>
-			<p>Sorry, there were the following problems with the form.</p>
-			<ul id="errors">
-				<% flash[:errors].each do |error| %>
-					<li><%= error %></li>
-				<% end %>
-			</ul>
-		<% end %>
+		
 
-	<%= yield %>
+	<section class="replies">
+<section class="peep" id="peep11">
+	<p>bob</p>
+	<p class="content">I've had a great week at Makers</p>
+	<p class="time">9 hour ago</p>
+	</section>
+		
+		
+	<form method='get' action="/sessions/reply/11">
+		<input type="submit" value="Reply">
+	</form>
+</section>
 	  
 	</body>
 </html>
