@@ -39,12 +39,16 @@ feature "Peeps" do
                 :password => '1234',
                 :password_confirmation => '1234')
 
+    User.create(:name => 'bart',
+                :username => 'eatmyshorts',
+                :email => "bart@test.com",
+                :password => 'simpson',
+                :password_confirmation => 'simpson')
+
     Peep.create(:user_id => User.first.id,
                 :posted_by => 'bob',
                 :content => "I've had a great week at Makers",
-                :created_at => '12:00',
-                :favourites => 15,
-                :re_peeps => 10)
+                :created_at => '12:00')
   end
   
     scenario "User can see peeps without being logged in" do
@@ -63,9 +67,15 @@ feature "Peeps" do
       expect(page).not_to have_button("Peep")
     end
 
-  # scenario "user can see others' peeps in chronological order" do
-  #   pending
-  # end
+    # scenario "user can see others' peeps in chronological order" do
+    #   sign_in('spongebob', '1234')
+    #   peep("Chitter is even better than Twitter")
+    #   sign_in('eatmyshorts', 'simpson')
+    #   peep("Chitter is awesome dude!")
+    #   sign_in('spongebob', '1234')
+    #   peep("It needs some CSS though")
+    #   expect(page).to have_content ?????
+    # end
 
   # scenario "user can reply to a peep from another user" do
   #   pending

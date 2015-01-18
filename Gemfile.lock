@@ -1,8 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (4.2.0)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
     addressable (2.3.6)
-    agnostic (0.1.1)
     bcrypt (3.1.9)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
@@ -37,9 +42,6 @@ GEM
       dm-core (~> 1.2.0)
     dm-migrations (1.2.0)
       dm-core (~> 1.2.0)
-    dm-pagination (0.4.0)
-      agnostic (>= 0.1.0)
-      dm-core (>= 0.9.11)
     dm-postgres-adapter (1.2.0)
       dm-do-adapter (~> 1.2.0)
       do_postgres (~> 0.10.6)
@@ -66,12 +68,14 @@ GEM
     do_postgres (0.10.14)
       data_objects (= 0.10.14)
     fastercsv (1.5.5)
+    i18n (0.7.0)
     json (1.8.2)
     json_pure (1.8.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     mime-types (2.4.3)
     mini_portile (0.6.2)
+    minitest (5.5.0)
     multi_json (1.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -99,7 +103,10 @@ GEM
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
     stringex (1.5.1)
+    thread_safe (0.3.4)
     tilt (1.4.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     uuidtools (2.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -108,10 +115,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   capybara
   data_mapper
   database_cleaner
-  dm-pagination
   dm-postgres-adapter
   launchy
   rack-flash3

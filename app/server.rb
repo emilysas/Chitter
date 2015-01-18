@@ -1,4 +1,6 @@
+require 'rubygems'
 require 'sinatra'
+require 'active_support'
 require 'data_mapper'
 require 'rack-flash'
 
@@ -65,7 +67,7 @@ class Chitter < Sinatra::Base
     if @peep.save
       redirect to('/')
     else
-      flash.now[:errors] = @user.errors.full_messages
+      flash.now[:errors] = @peep.errors.full_messages
       erb :peep
     end
   end

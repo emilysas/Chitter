@@ -1,5 +1,10 @@
 Welcome to Chitter!
 
-<% Peep.all.each do |peep| %>
-<%= peep.content %>
+<% if Peep.first %>
+	<% peeps = Peep.all(order: [:id.desc]) %>
+	<% peeps.each do |peep| %>
+		<%= peep.posted_by %>
+		<%= peep.content %>
+		<%= peep.when(peep.created_at) %>
+	<% end %>
 <% end %>
