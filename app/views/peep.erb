@@ -1,6 +1,8 @@
-<form method="post" action='/sessions/posted'>
-	<p>Write Peep: </p><input type="text" name="content">
-	<input type="hidden" name="user_id" value="<%= session[:user_id] %>">
-	<input type="hidden" name="posted_by" value="<%= session[:user_username] %>">
-	<input type="submit" value="Post Peep">
-</form>
+<section class="post_peep">
+	<form method="post" action='/sessions/posted'>
+		<p>Write Peep: </p><input type="text" name="content">
+		<input type="hidden" name="user_id" value="<%= session[:user_id] %>">
+		<input type="hidden" name="posted_by" value="<%= session[:user_username] %>">
+		<input type="submit" value="Post Peep">
+	</form>
+</section>

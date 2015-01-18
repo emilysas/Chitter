@@ -118,7 +118,7 @@ p { font-size: 1.5em;
 
 }
 
-.signin, .signup, .reply {
+.signin, .signup, .reply, .post_peep {
 	margin-top: 5%;
 	margin-left: 10%;
 }
