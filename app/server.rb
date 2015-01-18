@@ -19,6 +19,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/users/new' do
+    session.clear
     @user = User.new
     erb :sign_up
   end
@@ -39,6 +40,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/sessions/new' do
+    session.clear
     erb :sign_in
   end
 
