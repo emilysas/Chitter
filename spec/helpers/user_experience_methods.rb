@@ -20,7 +20,7 @@ module UserExperienceMethods
 
   def peep(content)
     click_button 'Peep'
-    fill_in :content => content
-    click_on 'Send Peep'
+    fill_in 'content', :with => content
+    click_on 'Post Peep'
   end
 end
