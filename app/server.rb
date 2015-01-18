@@ -6,6 +6,7 @@ require 'rack-flash'
 
 require_relative 'data_mapper_setup'
 require './app/helpers/ago'
+require './app/helpers/current_user'
 require './models/user'
 require './models/peep'
 require './models/reply'
@@ -15,6 +16,7 @@ class Chitter < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
   use Rack::Flash
+  include CurrentUser
 
   get '/' do
     erb :index
