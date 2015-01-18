@@ -59,7 +59,7 @@ feature "User experience" do
 
       scenario "user can post peep" do
         sign_in('spongebob', '1234')
-        peep("Chitter is even better than Twitter")
+        create_peep("Chitter is even better than Twitter")
         expect(page).to have_content("Chitter is even better than Twitter")
       end 
 
@@ -79,22 +79,17 @@ feature "User experience" do
 
       scenario "user can reply to a peep from another user" do
         sign_in('spongebob', '1234')
-        peep("Chitter is even better than Twitter")
+        create_peep("Chitter is even better than Twitter")
         sign_in('eatmyshorts', 'simpson')
-        first('li').click_button("Reply")
-        fill_in 'content', :with => "Maybe once you've sorted the CSS out"
-        click_button("Reply to Peep")
+        reply_peep("Me too!")
       end
 
       scenario "user can see other users' replies to a peep" do  
-        sign_in('spongebob', '1234')
-        peep("Chitter is even better than Twitter")
         sign_in('eatmyshorts', 'simpson')
-        first('li').click_button("Reply")
-        fill_in 'content', :with => "Maybe once you've sorted the CSS out"
+        reply_peep("Me too!")
         visit '/'
-        first('li').click_button("Replies: 1")
-        expect(page).to have_content("Maybe once you've sorted the CSS out")
+        first('li').click_button("Replies: #{Reply.all.size}")
+        expect(page).to have_content("Me too!")
       end
   end
 

@@ -18,9 +18,15 @@ module UserExperienceMethods
     click_button 'Login'
   end
 
-  def peep(content)
+  def create_peep(content)
     click_button 'Peep'
     fill_in 'content', :with => content
     click_on 'Post Peep'
+  end
+
+  def reply_peep(content)
+    first('li').click_button("Reply")
+    fill_in 'content', :with => content
+    click_button("Reply to Peep")
   end
 end
