@@ -59,9 +59,9 @@ feature "Peeps" do
       expect(page).to have_content("Chitter is even better than Twitter")
     end 
 
-  # #   scenario "User cannot send peeps unless logged in" do
-  #       pending
-  #   end
+    scenario "User cannot send peeps unless logged in" do
+      expect(page).not_to have_button("Peep")
+    end
 
   # scenario "user can see others' peeps in chronological order" do
   #   pending
