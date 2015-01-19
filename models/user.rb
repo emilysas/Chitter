@@ -66,16 +66,16 @@ class User
     end
   end
 
-  # def follow(others)
-  #   followed_users.concat(Array(others))
-  #   save
-  #   self
-  # end
+  def follow(others)
+    followed_users.concat(Array(others))
+    save
+    self
+  end
 
-  # def unfollow(others)
-  #   relationships_to_followed_users.all(:users => Array(others)).destroy!
-  #   reload
-  #   self
-  # end
+  def unfollow(others)
+    relationships_to_followed_users.all(:followed => Array(others)).destroy!
+    reload
+    self
+  end
 
 end

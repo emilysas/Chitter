@@ -67,7 +67,7 @@ feature "Peeps" do
       reply_peep("Yes!")
       visit '/'
       save_and_open_page
-      click_button("Replies: 1")
+      click_button("Replies")
       expect(page).to have_content("Yes!")
     end
 
