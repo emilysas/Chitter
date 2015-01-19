@@ -65,7 +65,9 @@ feature "Peeps" do
       create_peep("Chitter is even better than Twitter") 
       sign_in('eatmyshorts', 'simpson')
       reply_peep("Yes!")
-      page.all('.peep')[0].click_button("Replies: #{Reply.all.size}")
+      visit '/'
+      save_and_open_page
+      click_button("Replies: 1")
       expect(page).to have_content("Yes!")
     end
 
