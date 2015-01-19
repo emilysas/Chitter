@@ -1,2 +1,26 @@
-    # need to display either user info, or  all peeps from that user or last peep 
-    # and option to follow
+ <section class="all_peeps"
+	<% if @peeps %>
+	<% @peeps.each do |peep| %>
+		<% reps = peep.replies %>
+		<section class="peep" id="<%= peep.id %>">
+			<p><%= peep.posted_by %></p>
+			<p class="content"><%= peep.content %></p>
+			<p class="time"><%= peep.when(peep.created_at) %></p>
+			<section class="buttons">
+				<form method='get' action="/sessions/reply/<%= "#{peep.id}" %>">
+					<input type="submit" value="Reply">
+				</form>
+				<form method='get' action="/sessions/show_reply/<%= "#{peep.id}" %>">
+					<input type="submit" value="<%= "Replies: #{reps.count}" %>">
+				</form>
+				<form method='post' action="/sessions/favourite/<%= "#{peep.id}" %>">
+					<input type="submit" value="<%= "Favourites: #{peep.favourites}" %>">
+				</form>
+			</section>
+		</section>
+		<% end %>
+		<% else %>
+			<%= "There have been no peeps from this Chitterer yet!" %>
+	<% end %>
+
+</section>

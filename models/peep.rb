@@ -19,6 +19,10 @@ class Peep
     self.all.sort {|a,b|b.created_at <=> a.created_at}
   end
 
+  def self.all_by_user_in_chron(username)
+    self.all(:posted_by => username).sort {|a,b|b.created_at <=> a.created_at}
+  end
+
 
 end
 

@@ -19,16 +19,18 @@ feature "forming relationships" do
                 :password_confirmation => 'simpson')
 
     Peep.create(:user_id => User.first.id,
-                :posted_by => 'bart',
-                :content => "Please follow me!")
+                :posted_by => 'bob',
+                :content => "I've had a great week at Makers",
+                :created_at => '12:00',
+                :favourites => 1)
   end
 
   scenario "user can search for other users" do
     visit '/'
     click_on("Search for Chitterers")
-    fill_in 'search_username', :with => 'eatmyshorts'
-    click_button('Search')
-    expect(page).to have_content('Please follow me!')
+    fill_in "search_username", :with => 'bob'
+    click_on('Find')
+    expect(page).to have_content("I've had a great week at Makers")
   end
 
   # scenario "user can follow other users" do

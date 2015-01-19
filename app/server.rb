@@ -45,7 +45,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/users/details/' do
-    @searched_user = User.first(:username => params[:search_username])
+    @peeps = Peep.all_by_user_in_chron(params[:search_username])
     erb :user_info
   end
 
