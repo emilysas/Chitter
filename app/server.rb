@@ -19,6 +19,7 @@ class Chitter < Sinatra::Base
   include CurrentUser
 
   get '/' do
+    @peeps = Peep.all_in_chron
     erb :index
   end
 
@@ -37,6 +38,37 @@ class Chitter < Sinatra::Base
       flash.now[:errors] = @user.errors.full_messages
       erb :sign_up
     end
+  end
+
+  get '/users/search' do
+    erb :search
+  end
+
+  
+
+  post '/users/details/?:user' do
+    @searched = params[:user]
+    @followee = User.all.first(:username => @searched)
+    @peeps = Peep.all_by_user_in_chron(@searched)
+    erb :user_info
+  end
+
+  post '/users/details/' do
+    @searched = params[:search_username]
+    @followee = User.all.first(:username => @searched)
+    @peeps = Peep.all_by_user_in_chron(@searched)
+    erb :user_info
+  end
+
+  get '/users/follow/:username' do
+    followee = User.all.first(:username => params[:username])
+    current_user.follow(followee)
+    redirect '/'
+  end
+
+  get '/users/followers/:username' do
+    @followers = User.all.first(:username => params[:username]).followers
+    erb :followers
   end
 
   post '/sessions' do

@@ -15,6 +15,15 @@ class Peep
   belongs_to :user
   has n, :replies, :through => Resource
 
+  def self.all_in_chron
+    self.all.sort {|a,b|b.created_at <=> a.created_at}
+  end
+
+  def self.all_by_user_in_chron(username)
+    self.all(:posted_by => username).sort {|a,b|b.created_at <=> a.created_at}
+  end
+
+
 end
 
 

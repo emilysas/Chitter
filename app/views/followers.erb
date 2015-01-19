@@ -1,0 +1,19 @@
+
+<section class="all_followers"
+	<% if @followers %>
+		<% @followers.each do |follower| %>
+			<section class="follower">
+			<p><a href="/users/details/<%="#{follower.username}"%>"><%= follower.username %></a><p>
+			 	<form class="follow" method='get' action="/users/follow/<%= follower.username %>">
+					<input type="submit" value="Follow">
+				</form>
+				<form class="followers" method='get' action="/users/followers/<%= "follower.username" %>">
+					<input type="submit" value="<%= "Followers: #{follower.followers.size}" %>">
+				</form>
+			</section>
+</section>
+		<% end %>
+		<% else %>
+			<%= "This Chitterer has no followers yet!" %>
+	<% end %>
+</section>
