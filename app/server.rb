@@ -94,8 +94,11 @@ class Chitter < Sinatra::Base
     redirect '/'
   end
 
-  def current_user
-    @current_user ||= User.get(session[:user_id]) if session[:user_id]
+  post '/sessions/favourite/:peep_id' do
+    @peep = Peep.all(:id => params[:peep_id])
+    @peep.first.favourites+=1
+    @peep.save
+    redirect '/'
   end
 
 end

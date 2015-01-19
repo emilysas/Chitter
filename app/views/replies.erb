@@ -7,11 +7,13 @@
 	</section>
 		<% replies = Reply.all(order: [:id.desc]) %>
 		<% replies.each do |reply| %>
-			<section class="peep" id="<%= "reply#{reply.id}" %>">
-				<p><%= reply.posted_by %><p>
-				<p class="content"><%= reply.content %><p>
-				<p class="time"><%= reply.when(reply.created_at) %><p>
-			</section>
+			<% if reply.peep_id == @peep.id %>
+				<section class="peep" id="<%= "reply#{reply.id}" %>">
+					<p><%= reply.posted_by %><p>
+					<p class="content"><%= reply.content %><p>
+					<p class="time"><%= reply.when(reply.created_at) %><p>
+				</section>
+			<% end %>
 		<% end %>
 	<form method='get' action="/sessions/reply/<%= "#{@peep.id}" %>">
 		<input type="submit" value="Reply">

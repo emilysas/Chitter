@@ -13,8 +13,14 @@
 				<form method='get' action="/sessions/show_reply/<%= "#{peep.id}" %>">
 					<input type="submit" value="<%= "Replies: #{Reply.all(:peep_id => peep.id).size}" %>">
 				</form>
+				<form method='post' action="/sessions/favourite/<%= "#{peep.id}" %>">
+					<input type="submit" value="<%= "Favourites: #{Peep.all(:id => peep.id).first.favourites}" %>">
+				</form>
 			</section>
 		</section>
 		<% end %>
 	<% end %>
 </section>
+
+
+

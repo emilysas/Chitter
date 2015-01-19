@@ -21,7 +21,8 @@ feature "Peeps" do
     Peep.create(:user_id => User.first.id,
                 :posted_by => 'bob',
                 :content => "I've had a great week at Makers",
-                :created_at => '12:00')
+                :created_at => '12:00',
+                :favourites => 1)
   end
   
     scenario "User can see peeps without being logged in" do
@@ -66,6 +67,12 @@ feature "Peeps" do
       reply_peep("Yes!")
       page.all('.peep')[0].click_button("Replies: #{Reply.all.size}")
       expect(page).to have_content("Yes!")
+    end
+
+    scenario "user can favourite peeps" do
+      sign_in('spongebob', '1234')
+      click_button("Favourites: 1")
+      expect(Peep.first.favourites).to eq(2)
     end
 
 end
