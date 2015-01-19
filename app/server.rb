@@ -45,8 +45,15 @@ class Chitter < Sinatra::Base
   end
 
   post '/users/details/' do
-    @peeps = Peep.all_by_user_in_chron(params[:search_username])
+    @searched = params[:search_username]
+    @peeps = Peep.all_by_user_in_chron(@searched)
     erb :user_info
+  end
+
+  get '/users/follow/:username' do
+    followee = User.all.first(:username => params[:username])
+    current_user.follow(followee)
+    redirect '/'
   end
 
   post '/sessions' do

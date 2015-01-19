@@ -22,5 +22,7 @@
 		<% else %>
 			<%= "There have been no peeps from this Chitterer yet!" %>
 	<% end %>
-
+	<form class="follow" method='get' action="/users/follow/<%= "#{@searched}" %>">
+		<input type="submit" value="Follow">
+	</form>
 </section>

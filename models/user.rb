@@ -1,5 +1,6 @@
 require 'bcrypt'
 
+
 class User
 
   class Relationship
@@ -12,6 +13,7 @@ class User
   end
 
   include DataMapper::Resource
+
 
   property :id,              Serial
 
@@ -66,16 +68,14 @@ class User
     end
   end
 
-  def follow(others)
-    followed_users.concat(Array(others))
-    save
-    self
+  def follow(user)
+    User::Relationship.create(:followed => user, :follower => self)
   end
 
-  def unfollow(others)
-    relationships_to_followed_users.all(:followed => Array(others)).destroy!
-    reload
-    self
-  end
+  # def unfollow(others)
+  #   relationships_to_followed_users.all(:followed => Array(others)).destroy!
+  #   reload
+  #   self
+  # end
 
 end
