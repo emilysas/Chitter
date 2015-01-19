@@ -2,6 +2,15 @@ require 'bcrypt'
 
 class User
 
+  class Relationship
+
+    include DataMapper::Resource
+
+    belongs_to :follower, 'User', :key => true
+    belongs_to :followed, 'User', :key => true
+
+  end
+
   include DataMapper::Resource
 
   property :id,              Serial
@@ -25,6 +34,17 @@ class User
   has n, :peeps, :through => Resource
   has n, :replies, :through => Resource
 
+  has n, :relationships_to_followed_users, 'User::Relationship', :child_key => [ :follower_id ]
+  has n, :relationships_to_followers, 'User::Relationship', :child_key => [ :followed_id ]
+
+  has n, :followed_users, self, 
+    :through => :relationships_to_followed_users,
+    :via     => :followed
+
+  has n, :followers, self,
+    :through => :relationships_to_followers,
+    :via     => :follower
+  
   validates_uniqueness_of   :username
   validates_uniqueness_of   :email
   validates_confirmation_of :password
@@ -45,5 +65,17 @@ class User
       nil
     end
   end
+
+  # def follow(others)
+  #   followed_users.concat(Array(others))
+  #   save
+  #   self
+  # end
+
+  # def unfollow(others)
+  #   relationships_to_followed_users.all(:users => Array(others)).destroy!
+  #   reload
+  #   self
+  # end
 
 end
