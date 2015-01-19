@@ -3,7 +3,7 @@
 	<% @peeps.each do |peep| %>
 		<% reps = peep.replies %>
 		<section class="peep" id="<%= peep.id %>">
-			<p><%= peep.posted_by %></p>
+			<p class="posted_by"><a href="/users/details/<%="#{peep.posted_by}"%>"><%= peep.posted_by %></a></p>
 			<p class="content"><%= peep.content %></p>
 			<p class="time"><%= peep.when(peep.created_at) %></p>
 			<section class="buttons">

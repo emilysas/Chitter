@@ -21,11 +21,16 @@ h1 {	width: 33%;
 			display: inline;
 			font-size: 8em;
 			text-align: center;}
+
 h1 a{	display: inline;
 			color: white;
 			margin-left: 23%;
 			width: 33%;
 			text-decoration: none;
+}
+
+h1 a:hover {
+			color: white;
 }
 
 
@@ -107,8 +112,6 @@ img { display: inline;
 
 }
 
-
-
 .content {
 					text-align: center;
 }
@@ -142,3 +145,35 @@ p { font-size: 1.5em;
 	width: 7.5%;
 }
 
+.followee, .all_followers, .follower {
+					text-align: center;
+					margin-top: 5%;
+					margin-left: 38%;
+					margin-bottom: 2.5%;
+					height: 17.5%;
+					width: 20%;
+					background-color: white;
+					border: double;
+					border-color: #5f9ea0;
+					border-radius: 100%;
+					padding: 1%;
+}
+.following { display: inline;	
+
+}
+
+.follow {display: inline;
+
+}
+
+.followers {display: inline;
+
+}
+
+a {text-decoration: none;
+		color: black;
+				}
+
+a:hover {
+		color: #5f9ea0;
+}

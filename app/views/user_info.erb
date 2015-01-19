@@ -1,4 +1,15 @@
- <section class="all_peeps"
+<section class="followee">
+	<p><%= "#{@searched}" %><p>
+	<section class="following">
+	 	<form class="follow" method='get' action="/users/follow/<%= "#{@searched}" %>">
+			<input type="submit" value="Follow">
+		</form>
+		<form class="followers" method='get' action="/users/followers/<%= "#{@searched}" %>">
+			<input type="submit" value="<%= "Followers: #{@followee.followers.size}" %>">
+		</form>
+	</section>
+</section>
+<section class="all_peeps"
 	<% if @peeps %>
 	<% @peeps.each do |peep| %>
 		<% reps = peep.replies %>
@@ -22,7 +33,4 @@
 		<% else %>
 			<%= "There have been no peeps from this Chitterer yet!" %>
 	<% end %>
-	<form class="follow" method='get' action="/users/follow/<%= "#{@searched}" %>">
-		<input type="submit" value="Follow">
-	</form>
 </section>
