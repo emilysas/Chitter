@@ -1,7 +1,7 @@
 <section class="all_peeps"
-	<% if Peep.first %>
-		<% peeps = Peep.all(order: [:id.desc]) %>
-		<% peeps.each do |peep| %>
+	<% if @peeps.any? %>
+	<% @peeps.each do |peep| %>
+		<% reps = peep.replies %>
 		<section class="peep" id="<%= peep.id %>">
 			<p><%= peep.posted_by %></p>
 			<p class="content"><%= peep.content %></p>
@@ -11,10 +11,10 @@
 					<input type="submit" value="Reply">
 				</form>
 				<form method='get' action="/sessions/show_reply/<%= "#{peep.id}" %>">
-					<input type="submit" value="<%= "Replies: #{Reply.all(:peep_id => peep.id).size}" %>">
+					<input type="submit" value="<%= "Replies: #{reps.count}" %>">
 				</form>
 				<form method='post' action="/sessions/favourite/<%= "#{peep.id}" %>">
-					<input type="submit" value="<%= "Favourites: #{Peep.all(:id => peep.id).first.favourites}" %>">
+					<input type="submit" value="<%= "Favourites: #{peep.favourites}" %>">
 				</form>
 			</section>
 		</section>

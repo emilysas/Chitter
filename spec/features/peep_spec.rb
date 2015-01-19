@@ -58,6 +58,7 @@ feature "Peeps" do
       create_peep("Chitter is even better than Twitter")
       sign_in('eatmyshorts', 'simpson')
       reply_peep("Me too!")
+      expect(page).to have_content "Me too!"
     end
 
     scenario "user can see other users' replies to a peep" do 
@@ -66,8 +67,7 @@ feature "Peeps" do
       sign_in('eatmyshorts', 'simpson')
       reply_peep("Yes!")
       visit '/'
-      save_and_open_page
-      click_button("Replies")
+      click_on("Replies: 1")
       expect(page).to have_content("Yes!")
     end
 

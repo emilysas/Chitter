@@ -25,7 +25,8 @@ module UserExperienceMethods
   end
 
   def reply_peep(content)
-    page.all('.peep')[0].click_button("Reply")
+    peeps = page.all('.peep')
+    peeps.first.click_button 'Reply'
     fill_in 'content', :with => content
     click_button("Reply to Peep")
   end

@@ -24,9 +24,11 @@ feature "forming relationships" do
   end
 
   scenario "user can search for other users" do
+    visit '/'
+    click_on("Search for Chitterers")
     fill_in 'search_username', :with => 'eatmyshorts'
-    click_button('Search for Chitterers')
-    expect(page).to have_content('eatmyshorts').and('Please follow me!')
+    click_button('Search')
+    expect(page).to have_content('Please follow me!')
   end
 
   # scenario "user can follow other users" do
