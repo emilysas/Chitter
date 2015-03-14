@@ -3,6 +3,8 @@ _____________________
 
 This was my personal weekend challenge for Week 4 of Makers Academy, and was one of my favourites. The task was to create a an app that replicated the functionality of Twitter.
 
+![screenshot](app/public/screenshot.png?raw=true)
+
 ###Tools used
 
 * Ruby
